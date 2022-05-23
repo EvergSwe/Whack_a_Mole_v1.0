@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Whack a mole in see how many you get in 30 seconds">
+    <meta name="keywords" content="whack a mole, click game">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Whack A Mole</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+
+    <h1 class="heading">Whack a Mole</h1>
+
+    <div class="time-area">
+        <h2 class="time">Time Left: <span id="timeleft">30</span> <span>seconds</span></h2>
+    </div>
+
+    <div class="game-area" id="game-area">
+        <div class="square" id="box0"></div>
+        <div class="square" id="box1"></div>
+        <div class="square" id="box2"></div>
+        <div class="square" id="box3"></div>
+        <div class="square" id="box4"></div>
+        <div class="square" id="box5"></div>
+        <div class="square" id="box6"></div>
+        <div class="square" id="box7"></div>
+        <div class="square" id="box8"></div>
+
+    </div>
+
+    <div class="score-area">
+        <h2 class="score">Score: <span id="score">0</span></h2>
+    </div>
+    <div class="start-area">
+        <button onclick="startEasy();" class="start-game">Easy Game</button>
+        <button onclick="startHard();" class="start-game">Hard Game</button>
+    </div>
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+            <h1>Game Instruction</h1>
+            <p>Whack a mole game is a click-hit and score game. Use your 
+                mouse pointer or your touch screen to interact with the game.
+                Choose easy or hard difficulti level to start the game and try
+                to hit the mole. If you hit you will score! 
+                <br>
+                <img src="/assets/images/mole_in_game.png" alt="">
+                <br>
+                 GOOD LUCK!
+            </p>
+        </div>
+    </div>
+    <div class="info-area">
+        <button onclick="togglePopup()" class="info-btn">Game Instructions</button>
+    </div>
+
+   
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

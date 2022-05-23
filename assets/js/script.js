@@ -1,7 +1,13 @@
 let score = document.getElementById("score");
+let squares = document.getElementsByClassName("square");
 let result = 0;
 let timer = null;
+let randomMoleLocation;
 
+// show game instruction
+function togglePopup() {
+   document.getElementById("popup-1").classList.toggle("active");
+}
 
 /**
  * onclick easy-game button, start easy game with interval 1s
@@ -21,11 +27,6 @@ function startHard() {
    countDownSeconds();
 }
 
-// show game instruction
-function togglePopup() {
-   document.getElementById("popup-1").classList.toggle("active");
-}
-
 /**
  * when starting the game the the clock countdown starts from 60
  * time value reduce by 1 at an interval of 1s
@@ -42,7 +43,7 @@ function countDownSeconds() {
    if (newTime === -1) {
       clearTimeout(countDownTimer);
       clearTimeout(timer)
-      time.innerHTML = 30;
+      time.innerHTML = 10;
       score.innerHTML = 0;
       result = 0;
       alert("GAME OVER!");
@@ -54,32 +55,31 @@ function countDownSeconds() {
 /**
  * remove "old" mole before randomly placing a "new"
  * generate random integer between 0-8 and place mole
- * check mouse down location if position == moleLocation if it does
- * increase score by one
  */
 function randomSquare() {
-
-   let squares = document.getElementsByClassName("square");
    
-   for (let i=0; i<squares.length; i++) { 
-   squares[i].classList.remove("mole");
+   for (let square of squares) { 
+   square.classList.remove("mole");
    }
 
-   let randomSquare = squares[Math.floor(Math.random() * 9)]; 
-   randomSquare.classList.add("mole");
+   let randomMoleLocation = squares[Math.floor(Math.random() * 9)]; 
+   randomMoleLocation.classList.add("mole");
 
-   let moleLocation = randomSquare.id;
-   
-   for (let i=0; i<squares.length; i++) {
-      squares[i].addEventListener("mousedown", function() {
-         if (squares[i].id == moleLocation) {
-            result++;
-            score.innerHTML = result;
-            moleLocation = null;
-            console.log(result)
-         }   
-      })
-   }
+   console.log(randomMoleLocation)
 
 }
+
+
+/**
+ * for (let i=0; i<squares.length; i++) {
+   squares[i].addEventListener("mousedown", function() {
+      if (squares[i].id == moleLocation) {
+         result++;
+         score.innerHTML = result;
+         moleLocation = null;
+         console.log(result)
+      }   
+   })
+}
+ */
 

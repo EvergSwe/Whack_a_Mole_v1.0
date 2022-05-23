@@ -44,7 +44,7 @@ body {
     border-color: #ff9226;
 }
 
-.time-area, .score-area, {
+.time-area, .score-area {
     display: grid;
     grid-template-columns: 100vw;
     justify-content: center; 

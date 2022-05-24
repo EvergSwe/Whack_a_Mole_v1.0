@@ -1,3 +1,8 @@
+let score = document.getElementById("score");
+let result = 0;
+let timer = null;
+let moleLocation = null;
+
 function init() {
    console.log("init")
    let squares = document.getElementsByClassName("square");
@@ -18,12 +23,6 @@ function squareClicked(e) {
       
    }
 }
-
-let score = document.getElementById("score");
-let result = 0;
-let timer = null;
-let moleLocation = null;
-
 
 /**
  * onclick easy-game button, start easy game with interval 1s

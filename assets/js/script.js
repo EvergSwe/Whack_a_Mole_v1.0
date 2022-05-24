@@ -1,13 +1,29 @@
+function init() {
+   console.log("init")
+   let squares = document.getElementsByClassName("square");
+   
+   for (let square of squares) { 
+      square.addEventListener("mousedown", (e) => {
+         console.log("addEventListenere mousedown " + e.target.id);
+         squareClicked(e);
+      })
+   }
+}
+
+function squareClicked(e) {
+   if (e.target.id === moleLocation) {
+      result++;
+      score.innerHTML = result;
+      moleLocation = null;
+      
+   }
+}
+
 let score = document.getElementById("score");
-let squares = document.getElementsByClassName("square");
 let result = 0;
 let timer = null;
-let randomMoleLocation;
+let moleLocation = null;
 
-// show game instruction
-function togglePopup() {
-   document.getElementById("popup-1").classList.toggle("active");
-}
 
 /**
  * onclick easy-game button, start easy game with interval 1s
@@ -25,6 +41,11 @@ function startEasy() {
 function startHard() {
    timer = setInterval(randomSquare, 600);
    countDownSeconds();
+}
+
+// show game instruction
+function togglePopup() {
+   document.getElementById("popup-1").classList.toggle("active");
 }
 
 /**
@@ -55,31 +76,35 @@ function countDownSeconds() {
 /**
  * remove "old" mole before randomly placing a "new"
  * generate random integer between 0-8 and place mole
+ * check mouse down location if position == moleLocation if it does
+ * increase score by one
  */
 function randomSquare() {
+
+   let squares = document.getElementsByClassName("square");
    
    for (let square of squares) { 
    square.classList.remove("mole");
    }
 
-   let randomMoleLocation = squares[Math.floor(Math.random() * 9)]; 
-   randomMoleLocation.classList.add("mole");
+   let randomSquare = squares[Math.floor(Math.random() * 9)]; 
+   randomSquare.classList.add("mole");
 
-   console.log(randomMoleLocation)
+   moleLocation = randomSquare.id;
 
-}
-
-
-/**
- * for (let i=0; i<squares.length; i++) {
-   squares[i].addEventListener("mousedown", function() {
-      if (squares[i].id == moleLocation) {
+   /**
+    * document.addEventListener("mousedown", (e) => {
+      console.log("addEventListenere mousedown " + e.target.id)
+      if (e.target.id === moleLocation) {
          result++;
          score.innerHTML = result;
          moleLocation = null;
-         console.log(result)
-      }   
+         e.target.id =null;
+         //console.log(e.target.id)
+      }
    })
-}
- */
+    */
+    
 
+
+}
